@@ -7,9 +7,17 @@ import axios from "axios";
 export default {
   startQuestion({ commit }) {
     commit(types.TEST_START_QUESTION);
+    axios({
+      method: "get",
+      url: "http://localhost:5000/start-question"
+    });
   },
   startAnswer({ commit }) {
     commit(types.TEST_START_ANSWER);
+    axios({
+      method: "get",
+      url: "http://localhost:5000/start-answer"
+    });
   },
   finishAnswer({ commit }) {
     commit(types.TEST_FINISH_ANSWER);
@@ -26,11 +34,5 @@ export default {
   },
   connectSocket({ commit }) {
     commit(types.TEST_CONNECT_SOCKET);
-  },
-  setChanResponse({ commit }, { category, confidence }) {
-    commit(types.TEST_SET_CHAN_RESPONSE, { category, confidence });
-  },
-  setKochResponse({ commit }, { category, confidence }) {
-    commit(types.TEST_SET_KOCH_RESPONSE, { category, confidence });
   }
 };

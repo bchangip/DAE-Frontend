@@ -1,20 +1,10 @@
 import * as types from "@/types/microModule";
 
 export default {
-  startMicroRecording({ commit }) {
-    commit(types.MICRO_MODULE_START_RECORDING);
+  setCastroResponse({ commit }, { category, confidence }) {
+    commit(types.MICRO_MODULE_SET_CASTRO_RESPONSE, { category, confidence });
   },
-  startMicroAnalysis({ commit }) {
-    commit(types.MICRO_MODULE_START_ANALYSIS);
-    // Prototype
-    setTimeout(function() {
-      commit(types.MICRO_MODULE_SET_RESULT, {
-        category: "truth",
-        confidence: 86
-      });
-    }, 9000);
-  },
-  setMicroResult({ commit }) {
-    commit(types.MICRO_MODULE_SET_RESULT);
+  setNoriegaResponse({ commit }, { category, confidence }) {
+    commit(types.MICRO_MODULE_SET_NORIEGA_RESPONSE, { category, confidence });
   }
 };

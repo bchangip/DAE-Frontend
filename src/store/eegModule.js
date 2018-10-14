@@ -2,15 +2,33 @@ import mutations from "@/mutations/eegModule";
 import actions from "@/actions/eegModule";
 
 const state = {
-  category: "",
-  confidence: 0,
-  status: "standby"
+  koch: {
+    category: "",
+    confidence: 0,
+    status: "standby"
+  },
+  rudy: {
+    category: "",
+    confidence: 0,
+    status: "standby"
+  },
+  alvaro: {
+    category: "",
+    confidence: 0,
+    status: "standby"
+  }
 };
 
 const getters = {
-  eegModuleCategory: state => state.category,
-  eegModuleConfidence: state => state.confidence,
-  eegModuleStatus: state => state.status
+  eegModuleKochCategory: state => state.koch.category,
+  eegModuleKochConfidence: state => state.koch.confidence,
+  eegModuleKochStatus: state => state.koch.status,
+  eegModuleRudyCategory: state => state.rudy.category,
+  eegModuleRudyConfidence: state => state.rudy.confidence,
+  eegModuleRudyStatus: state => state.rudy.status,
+  eegModuleAlvaroCategory: state => state.alvaro.category,
+  eegModuleAlvaroConfidence: state => state.alvaro.confidence,
+  eegModuleAlvaroStatus: state => state.alvaro.status
 };
 
 export default {

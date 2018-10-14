@@ -1,20 +1,13 @@
 import * as types from "@/types/voiceModule";
 
 export default {
-  startVoiceRecording({ commit }) {
-    commit(types.VOICE_MODULE_START_RECORDING);
+  setOlgaResponse({ commit }, { category, confidence }) {
+    commit(types.VOICE_MODULE_SET_OLGA_RESPONSE, { category, confidence });
   },
-  startVoiceAnalysis({ commit }) {
-    commit(types.VOICE_MODULE_START_ANALYSIS);
-    // Prototype
-    setTimeout(function() {
-      commit(types.VOICE_MODULE_SET_RESULT, {
-        category: "truth",
-        confidence: 98
-      });
-    }, 6000);
+  setLeonelResponse({ commit }, { category, confidence }) {
+    commit(types.VOICE_MODULE_SET_LEONEL_RESPONSE, { category, confidence });
   },
-  setVoiceResult({ commit }) {
-    commit(types.VOICE_MODULE_SET_RESULT);
+  setChanResponse({ commit }, { category, confidence }) {
+    commit(types.VOICE_MODULE_SET_CHAN_RESPONSE, { category, confidence });
   }
 };

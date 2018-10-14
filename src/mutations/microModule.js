@@ -1,18 +1,31 @@
 import * as types from "@/types/microModule";
+import * as testTypes from "@/types/test";
 
 export default {
-  [types.MICRO_MODULE_START_RECORDING](state) {
-    state.status = "recording";
+  [testTypes.TEST_START_QUESTION](state) {
+    state.castro.status = "recording";
+    state.noriega.status = "recording";
   },
-  [types.MICRO_MODULE_START_ANALYSIS](state) {
-    state.status = "analyzing";
-  },
-  [types.MICRO_MODULE_SET_RESULT](state, { category, confidence }) {
-    state.category = category;
-    state.confidence = confidence;
-    state.status = "finished";
+  [testTypes.TEST_FINISH_ANSWER](state) {
+    state.castro.status = "analyzing";
+    state.noriega.status = "analyzing";
   },
   [types.MICRO_MODULE_RESET](state) {
-    state.status = "standby";
+    state.castro.category = "";
+    state.castro.confidence = 0;
+    state.castro.status = "standby";
+    state.noriega.category = "";
+    state.noriega.confidence = 0;
+    state.noriega.status = "standby";
+  },
+  [types.MICRO_MODULE_SET_CASTRO_RESPONSE](state, { category, confidence }) {
+    state.castro.category = category;
+    state.castro.confidence = confidence;
+    state.castro.status = "finished";
+  },
+  [types.MICRO_MODULE_SET_NORIEGA_RESPONSE](state, { category, confidence }) {
+    state.noriega.category = category;
+    state.noriega.confidence = confidence;
+    state.noriega.status = "finished";
   }
 };

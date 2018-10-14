@@ -13,5 +13,14 @@ export default {
   },
   setEegResult({ commit }) {
     commit(types.EEG_MODULE_SET_RESULT);
+  },
+  setKochResponse({ commit }, { category, confidence }) {
+    commit(types.EEG_MODULE_SET_KOCH_RESPONSE, { category, confidence });
+  },
+  setRudyResponse({ commit }, { category, confidence }) {
+    commit(types.EEG_MODULE_SET_RUDY_RESPONSE, { category, confidence });
+  },
+  setAlvaroResponse({ commit }, { category, confidence }) {
+    commit(types.EEG_MODULE_SET_ALVARO_RESPONSE, { category, confidence });
   }
 };
