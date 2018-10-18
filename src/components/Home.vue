@@ -1,5 +1,52 @@
 <template>
   <div class="home">
+    <div class="personal-info">
+      <div class="personal-info-inputs">
+        <div class="personal-info-input">
+          Género:
+          <select v-model="model.gender" name="gender">
+            <option>Masculino</option>
+            <option>Femenino</option>
+          </select>
+        </div>
+        <div class="personal-info-input">
+          Edad:
+          <input type="text" v-model="model.age" name="age" placeholder="Edad">
+        </div>
+        <div class="personal-info-input">
+          PEBL:
+          <input type="text" v-model="model.pebl" name="pebl" placeholder="PEBL">
+        </div>
+        <div class="personal-info-input">
+          DSMT:
+          <input type="text" v-model="model.dsmt" name="dsmt" placeholder="DSMT">
+        </div>
+        <div class="personal-info-input">
+          HARE:
+          <input type="text" v-model="model.hare" name="hare" placeholder="HARE">
+        </div>
+        <div class="personal-info-input">
+          CIEP:
+          <input type="text" v-model="model.ciep" name="ciep" placeholder="CIEP">
+        </div>
+        <div class="personal-info-input">
+          CIEF:
+          <input type="text" v-model="model.cief" name="cief" placeholder="CIEF">
+        </div>
+        <div class="personal-info-input">
+          CIEC:
+          <input type="text" v-model="model.ciec" name="ciec" placeholder="CIEC">
+        </div>
+        <div class="personal-info-input">
+          CIEM:
+          <input type="text" v-model="model.ciem" name="ciem" placeholder="CIEM">
+        </div>
+        <div class="personal-info-input">
+          CIE:
+          <input type="text" v-model="model.cie" name="cie" placeholder="CIE">
+        </div>
+      </div>
+    </div>
     <div class="modules">
       <div class="module">
         <h3>Análisis de voz</h3>
@@ -172,9 +219,9 @@
       </div>
     </div>
     <div class="test-controls">
-      <button class="start-question-button" @click='startQuestion();' v-if='testStatus === "standby"'>Iniciar pregunta</button>
-      <button class="start-question-button" @click='startAnswer();' v-if='testStatus === "questioning"'>Iniciar respuesta</button>
-      <button class="start-question-button" @click='finishAnswer();' v-if='testStatus === "answering"'>Finalizar respuesta</button>
+      <button class="start-question-button" @click='startQuestion(model);' v-if='testStatus === "standby"'>Iniciar pregunta</button>
+      <button class="start-question-button" @click='startAnswer(model);' v-if='testStatus === "questioning"'>Iniciar respuesta</button>
+      <button class="start-question-button" @click='finishAnswer(model);' v-if='testStatus === "answering"'>Finalizar respuesta</button>
       <button class="start-question-button" @click='resetSystem()' v-if='testStatus === "results"'>Reiniciar</button>
     </div>
   </div>
@@ -196,6 +243,22 @@ export default {
     RadarSpinner,
     FingerprintSpinner,
     LoopingRhombusesSpinner
+  },
+  data() {
+    return {
+      model: {
+        gender: "",
+        age: "",
+        pebl: "",
+        dsmt: "",
+        hare: "",
+        ciep: "",
+        cief: "",
+        ciec: "",
+        ciem: "",
+        cie: ""
+      }
+    };
   },
   computed: {
     ...mapGetters([
@@ -258,11 +321,31 @@ export default {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  margin-top: 15px;
+}
+
+.personal-info {
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: rgb(158, 211, 237);
+}
+
+.personal-info-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.personal-info-input {
+  margin: 0 10px;
 }
 
 .module {
   width: 30%;
-  height: 650px;
+  height: 550px;
   padding: 20px;
   border-radius: 10px;
   box-sizing: border-box;
@@ -270,7 +353,7 @@ export default {
 }
 
 .submodule {
-  padding: 20px;
+  padding: 5px;
   margin-bottom: 5px;
   background-color: rgb(199, 233, 249);
   border-radius: 10px;
@@ -301,6 +384,15 @@ export default {
   background-color: rgb(221, 234, 255);
   font-size: 30px;
   padding: 20px;
+  border-radius: 5px;
+  border: none;
+}
+
+.set-personal-info-button {
+  margin-top: 10px;
+  background-color: rgb(221, 234, 255);
+  font-size: 20px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
 }

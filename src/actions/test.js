@@ -5,26 +5,17 @@ import { MICRO_MODULE_RESET } from "@/types/microModule";
 import axios from "axios";
 
 export default {
-  startQuestion({ commit }) {
+  startQuestion({ commit }, model) {
     commit(types.TEST_START_QUESTION);
-    axios({
-      method: "get",
-      url: "http://localhost:5000/start-question"
-    });
+    axios.post("http://localhost:5000/start-question", model);
   },
-  startAnswer({ commit }) {
+  startAnswer({ commit }, model) {
     commit(types.TEST_START_ANSWER);
-    axios({
-      method: "get",
-      url: "http://localhost:5000/start-answer"
-    });
+    axios.post("http://localhost:5000/start-answer", model);
   },
-  finishAnswer({ commit }) {
+  finishAnswer({ commit }, model) {
     commit(types.TEST_FINISH_ANSWER);
-    axios({
-      method: "get",
-      url: "http://localhost:5000/finish-answer"
-    });
+    axios.post("http://localhost:5000/finish-answer", model);
   },
   resetSystem({ commit }) {
     commit(VOICE_MODULE_RESET);
