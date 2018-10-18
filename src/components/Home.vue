@@ -3,6 +3,10 @@
     <div class="personal-info">
       <div class="personal-info-inputs">
         <div class="personal-info-input">
+          ID:
+          <input type="text" v-model="model.id" name="id" placeholder="Codigo">
+        </div>
+        <div class="personal-info-input">
           Género:
           <select v-model="model.gender" name="gender">
             <option>Masculino</option>
@@ -222,7 +226,34 @@
       <button class="start-question-button" @click='startQuestion(model);' v-if='testStatus === "standby"'>Iniciar pregunta</button>
       <button class="start-question-button" @click='startAnswer(model);' v-if='testStatus === "questioning"'>Iniciar respuesta</button>
       <button class="start-question-button" @click='finishAnswer(model);' v-if='testStatus === "answering"'>Finalizar respuesta</button>
-      <button class="start-question-button" @click='resetSystem()' v-if='testStatus === "results"'>Reiniciar</button>
+      <button class="start-question-button"
+        @click='resetSystem({ model, 
+          voiceModuleOlgaCategory,
+          voiceModuleOlgaConfidence,
+          voiceModuleOlgaStatus,
+          voiceModuleLeonelCategory,
+          voiceModuleLeonelConfidence,
+          voiceModuleLeonelStatus,
+          voiceModuleChanCategory,
+          voiceModuleChanConfidence,
+          voiceModuleChanStatus,
+          eegModuleKochCategory,
+          eegModuleKochConfidence,
+          eegModuleKochStatus,
+          eegModuleRudyCategory,
+          eegModuleRudyConfidence,
+          eegModuleRudyStatus,
+          eegModuleAlvaroCategory,
+          eegModuleAlvaroConfidence,
+          eegModuleAlvaroStatus,
+          microModuleCastroCategory,
+          microModuleCastroConfidence,
+          microModuleCastroStatus,
+          microModuleNoriegaCategory,
+          microModuleNoriegaConfidence,
+          microModuleNoriegaStatus
+        })'
+        v-if='testStatus === "results"'>Reiniciar</button>
     </div>
   </div>
 </template>
@@ -247,6 +278,7 @@ export default {
   data() {
     return {
       model: {
+        id: "",
         gender: "",
         age: "",
         pebl: "",
